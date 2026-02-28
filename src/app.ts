@@ -1,6 +1,9 @@
-import express, { Application, Request, Response } from "express"
+import express, { Application, NextFunction, Request, Response } from "express"
 import { prisma } from "./app/lib/prisma";
 import { IndexRoutes } from "./app/route";
+import { success } from "better-auth";
+import { globalErrorHandler } from "./app/middleware/globalErrorHandler";
+import { notFound } from "./app/middleware/notFound";
 
 const app: Application = express();
 const port = 5000; // The port your express server will be running on.
@@ -27,6 +30,9 @@ app.get('/', async(req: Request, res: Response) => {
     data: specialty
   })
 });
+
+app.use(globalErrorHandler);
+app.use(notFound)
 
 
 export default app;
