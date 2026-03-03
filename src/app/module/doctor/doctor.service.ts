@@ -38,9 +38,22 @@ const updateDoctor = async(id : string, payload : Doctor) : Promise<Doctor> =>{
     return updatedDoctor;
 }
 
+const deleteDoctor = async(id: string, payload : Doctor) : Promise<Doctor> =>{
+    const {isDeleted} = payload;
+
+    const softDeleted = await prisma.doctor.update({
+        where:{id},
+        data: payload,
+
+    })
+
+    return softDeleted;
+}
+
 export const DoctorService = {
     getAllDoctors,
     getDoctorById,
-    updateDoctor
+    updateDoctor,
+    deleteDoctor
 
 }
