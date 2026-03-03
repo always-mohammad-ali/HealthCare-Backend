@@ -21,7 +21,6 @@ export const auth = betterAuth({
                 type: "string",
                 required: true,
                 defaultValue: Role.PATIENT
-
             },
             status:{
                 type: "string",

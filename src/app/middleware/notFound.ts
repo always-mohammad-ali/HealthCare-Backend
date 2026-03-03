@@ -1,4 +1,4 @@
-import { success } from "better-auth";
+
 import { Request, Response } from "express";
 import status from "http-status";
 
