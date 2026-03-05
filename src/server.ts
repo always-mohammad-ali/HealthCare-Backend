@@ -1,6 +1,6 @@
 import express, { Application, Request, Response } from "express";
 import app from "./app";
-import { envVars } from "./config/env";
+import { envVars } from "./app/config/env";
 
 
 
