@@ -4,6 +4,8 @@ import { IndexRoutes } from "./app/route";
 import { success } from "better-auth";
 import { globalErrorHandler } from "./app/middleware/globalErrorHandler";
 import { notFound } from "./app/middleware/notFound";
+import AppError from "./app/errorHelpers/AppError";
+import status from "http-status";
 
 const app: Application = express();
 const port = 5000; // The port your express server will be running on.
@@ -19,6 +21,7 @@ app.use('/api/v1/', IndexRoutes);
 
 // Basic route
 app.get('/', async(req: Request, res: Response) => {
+  throw new AppError(status.BAD_REQUEST, "just for testing purpose");
     const specialty = await prisma.specialty.create({
         data: {
             title: "cardiology"
